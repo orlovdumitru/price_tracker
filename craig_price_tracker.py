@@ -45,7 +45,7 @@ class CraigPrice(object):
                 link = lis.find("a", class_ = "result-title hdrlnk")
                 link = link['href']
                 # get immage
-                folder_image_path = "No image"
+                image = ""
                 try:
                     ids = lis.select("a")[0]['data-ids']
                     ids_img = (ids.split(":")[1]).split(",")[0]
@@ -62,7 +62,7 @@ class CraigPrice(object):
                     <br>
                     Image:
                     <br>
-                    <img src="{image}">
+                    <img src="{image}" alt="No image">
                     <br><br>
                     \n
                 '''
