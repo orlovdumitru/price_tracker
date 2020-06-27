@@ -5,8 +5,11 @@ import json
 from time import sleep
 from bs4 import BeautifulSoup
 import threading
-from setup import MAX_PRICE, AMAZON_URL, HEADERS
-from send_email import SendEmail
+
+import sys
+sys.path.append('../')
+from price_tracker.setup import MAX_PRICE, AMAZON_URL, HEADERS
+from price_tracker.send_email import SendEmail
 
 
 class AmazPrice(object):

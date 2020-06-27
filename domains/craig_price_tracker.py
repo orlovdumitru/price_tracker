@@ -5,8 +5,11 @@ from bs4 import BeautifulSoup
 import threading
 from urllib.parse import urljoin
 
-from setup import CRAIGSLIST_URL, CRAIGSLIST_IMG_URL, MAX_PRICE, MIN_PRICE, IMG_PATH
-from send_email import SendEmail
+import sys
+sys.path.append('../')
+
+from price_tracker.setup import CRAIGSLIST_URL, CRAIGSLIST_IMG_URL, MAX_PRICE, MIN_PRICE, IMG_PATH
+from price_tracker.send_email import SendEmail
 
 class CraigPrice(object):
 

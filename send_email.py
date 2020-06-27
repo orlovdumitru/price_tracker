@@ -1,7 +1,7 @@
 # https://realpython.com/python-send-email/
 
 import smtplib, ssl
-from setup import FROM_EMAIL, TO_EMAIL, PASSWORD, PORT
+from price_tracker.setup import FROM_EMAIL, TO_EMAIL, PASSWORD, PORT
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 

@@ -1,4 +1,4 @@
-from threading import Timer
+# from threading import Timer
 from time import sleep
 
 from domains.craig_price_tracker import CraigPrice
@@ -8,9 +8,19 @@ from domains.eba_price_tracker import EbaPrice
 
 search_in = (input("Search on Craigslist(c) | Ebay(e) | Amazon(a): \n")).lower()
 looking_for = input("What are you looking for: \n")
-how_often = input('How offten to get notification (in minutes): ')
-if how_often.isnumeric():
-    how_often = int(how_often)
+how_often = input('How offten to get notification (ex: 1 minute => (1 m) | 1 hour  => (1 h) ): ')
+elapse_time, units = how_often.split(" ")
+looping_alert = False
+
+if elapse_time.isnumeric():
+    if units.lower() in ['m', 'minute']:
+        elapse_time = int(elapse_time)
+    elif units.lower() in ['h', 'hour']:
+        elapse_time = int(elapse_time) * 60
+    looping_alert = True
+else:
+    print("Incorect timing format")
+    
 
 craig = None
 amaz = None
@@ -36,9 +46,9 @@ def timeout():
         eba.getPrice(looking_for)
 
 
-while True:
+while looping_alert:
     timeout()
-    sleep(how_often * 60)
+    sleep(elapse_time * 60)
 
 # duration in seconds
 # timer = Timer(how_often * 60, timeout)

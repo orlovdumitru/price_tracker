@@ -2,7 +2,7 @@
 import random
 import re
 import os
-from credentials import *
+from price_tracker.credentials import *
 
 
 MAX_PRICE = 200.00
