@@ -5,7 +5,7 @@ import os
 from credentials import *
 
 
-MAX_PRICE = 100.00
+MAX_PRICE = 200.00
 MIN_PRICE = 10.00
 
 CRAIGSLIST_URL = "https://chicago.craigslist.org/search/sss?sort=rel&query="
