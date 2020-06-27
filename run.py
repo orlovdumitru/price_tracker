@@ -1,10 +1,14 @@
 # from threading import Timer
 from time import sleep
+import os
 
 from domains.craig_price_tracker import CraigPrice
 from domains.amz_price_tracker import AmazPrice
 from domains.eba_price_tracker import EbaPrice
+from tools import create_credentials, create_record_file
 
+
+create_credentials()
 
 search_in = (input("Search on Craigslist(c) | Ebay(e) | Amazon(a): \n")).lower()
 looking_for = input("What are you looking for: \n")
@@ -21,20 +25,21 @@ if elapse_time.isnumeric():
 else:
     print("Incorect timing format")
     
-
 craig = None
 amaz = None
 eba = None
 
 if "craigslist" in search_in or "c" in search_in:
     craig = CraigPrice()
+    create_record_file("scraped_craig.txt")
 
 if "amazon" in search_in or "a" in search_in:
     amz = AmazPrice(looking_for)
+    create_record_file("scraped_amaz.txt")
     
 if "ebay" in search_in or "e" in search_in:
     eba = EbaPrice()
-
+    create_record_file("scraped_eba.txt")
 
 
 def timeout():

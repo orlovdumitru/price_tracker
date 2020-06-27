@@ -2,3 +2,6 @@ credentials.py
 env_price
 __pycache__
 amazon-scraper
+scraped_craig.txt
+scraped_amaz.txt
+scraped_eba.txt

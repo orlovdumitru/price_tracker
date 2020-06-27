@@ -1,9 +1,11 @@
 # https://realpython.com/python-send-email/
 
 import smtplib, ssl
-from price_tracker.setup import FROM_EMAIL, TO_EMAIL, PASSWORD, PORT
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from datetime import datetime
+
+from price_tracker.setup import FROM_EMAIL, TO_EMAIL, PASSWORD, PORT
 
 
 class SendEmail(object):
@@ -42,7 +44,8 @@ class SendEmail(object):
         try:
             server.login(self.from_email, self.password)
             server.sendmail(self.from_email, msg['To'], msg.as_string())
-            print("Email sent ...")
+            date_time = (datetime.now()).strftime("%a,(%d/%b/%Y) %X")
+            print(f"{date_time} => Email sent ...")
         except Exception as e:
             print(f"unable to send email {e}")
         finally:
