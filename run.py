@@ -1,5 +1,4 @@
-# from threading import Timer
-from time import sleep
+from threading import Timer
 import os
 
 from domains.craig_price_tracker import CraigPrice
@@ -52,12 +51,8 @@ def timeout():
 
 
 while looping_alert:
-    timeout()
-    sleep(elapse_time * 60)
-
-# duration in seconds
-# timer = Timer(how_often * 60, timeout)
-# timer.start()
-
-# wait to complete
-# timer.join()
+    # create thread duration in seconds
+    timer = Timer(elapse_time * 60, timeout)
+    timer.start()
+    # wait to complete
+    timer.join()
