@@ -1,12 +1,13 @@
 
 import random
-import re
+# import re
 import os
+import json
 from price_tracker.credentials import *
 
 
-MAX_PRICE = 200.00
-MIN_PRICE = 10.00
+MAX_PRICE = 1200.00
+MIN_PRICE = 500.00
 
 CRAIGSLIST_URL = "https://chicago.craigslist.org/search/sss?sort=rel&query="
 CRAIGSLIST_IMG_URL = "https://images.craigslist.org/"
@@ -32,15 +33,14 @@ def random_agent():
     https://www.networkinghowtos.com/howto/common-user-agent-list/?ref=hackernoon.com
     https://developers.whatismybrowser.com/useragents/explore/
     '''
-
-    file = open('agents.txt', 'r')
-    ag_text = file.read()
+    file = open('agents.json', 'r')
+    data = file.read()
     file.close()
-    
-    path = "\n"
-    agents = re.split(path, ag_text)
-    idx = random.randint(0, len(agents)-1)
-    return agents[idx]
+    obj_data = json.loads(data)
+    idx = random.randint(0, len(obj_data['agents'])-1)
+    agent = obj_data['agents'][idx]["User-Agent"]
+    return agent
+
 
 HEADERS = {
     "User-Agent": random_agent(),
