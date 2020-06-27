@@ -20,7 +20,9 @@ AMAZON_URL = "https://www.amazon.com/s?k="
 
 FROM_EMAIL = FROM_EMAIL
 PASSWORD = PASSWORD
+PORT = 587
 TO_EMAIL = TO_EMAIL
+
 
 IMG_PATH = "./images/"
 

@@ -1,9 +1,9 @@
 from threading import Timer
 from time import sleep
 
-from craig_price_tracker import CraigPrice
-from amz_price_tracker import AmazPrice
-from eba_price_tracker import EbaPrice
+from domains.craig_price_tracker import CraigPrice
+from domains.amz_price_tracker import AmazPrice
+from domains.eba_price_tracker import EbaPrice
 
 
 search_in = (input("Search on Craigslist(c) | Ebay(e) | Amazon(a): \n")).lower()

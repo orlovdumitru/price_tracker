@@ -1,7 +1,7 @@
 # https://realpython.com/python-send-email/
 
 import smtplib, ssl
-from setup import FROM_EMAIL, TO_EMAIL, PASSWORD
+from setup import FROM_EMAIL, TO_EMAIL, PASSWORD, PORT
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
@@ -14,6 +14,7 @@ class SendEmail(object):
         self.to_email = TO_EMAIL
         self.message = message
         self.subject = subject
+        self.port = PORT
 
 
     def sendEmail(self, page, url=''):
@@ -33,7 +34,7 @@ class SendEmail(object):
         # create secure context
         context = ssl.create_default_context()
 
-        server = smtplib.SMTP(host="smtp.mail.com", port=587)
+        server = smtplib.SMTP(host="smtp.mail.com", port=self.port)
         server.ehlo()
         server.starttls(context=context) #secure connection
         server.ehlo()
