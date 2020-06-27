@@ -48,10 +48,11 @@ class CraigPrice(object):
                 # get title
                 title = lis.find_all("a", class_ = "result-title hdrlnk")[0].get_text()
                 # check if title in the file already
-                if title in scraped_text:
+                existing_deal = f"{title} => {price}"
+                if existing_deal in scraped_text:
                     continue
                 else:
-                    open_scraped_file.write(f"{title}\n")
+                    open_scraped_file.write(f"{existing_deal}\n")
 
                 # get link
                 link = lis.find("a", class_ = "result-title hdrlnk")

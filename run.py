@@ -49,7 +49,8 @@ def timeout():
     if eba:
         eba.getPrice(looking_for)
 
-
+# first start
+timeout()
 while looping_alert:
     # create thread duration in seconds
     timer = Timer(elapse_time * 60, timeout)
